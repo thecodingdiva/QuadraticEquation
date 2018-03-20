@@ -10,9 +10,14 @@ namespace QuadraticEquation
     {
         static void Main(string[] args)
         {
-            double a = 4;
-            double b = 5;
-            double c = 6;
+            Console.WriteLine("Enter coefficient a: ");
+            double a = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Enter coefficient b: ");
+            double b = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Enter coefficient c: ");
+            double c = Convert.ToDouble(Console.ReadLine());
 
             double discriminant = (b * b) - (4 * a * c);
             double numberator1 = (0 - b) + Math.Sqrt(discriminant);
