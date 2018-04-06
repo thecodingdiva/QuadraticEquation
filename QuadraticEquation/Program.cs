@@ -30,9 +30,9 @@ namespace QuadraticEquation
                 }
                 else
                 {
-                    double numberator1 = (0 - b) + Math.Sqrt(discriminant);
-                    double numberator2 = (0 - b) - Math.Sqrt(discriminant);
-                    double denominator = 2 * a;
+                    double numberator1 = checked((0 - b) + Math.Sqrt(discriminant));
+                    double numberator2 = checked((0 - b) - Math.Sqrt(discriminant));
+                    double denominator = checked(2 * a);
 
                     if (denominator == 0)
                     {
@@ -54,6 +54,10 @@ namespace QuadraticEquation
             catch(DivideByZeroException e1)
             {
                 Console.WriteLine("Your input produces an imaginary number.");
+            }
+            finally
+            {
+                Console.WriteLine("Your program has terminated");
             }
         }
     }
