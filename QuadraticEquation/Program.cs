@@ -10,24 +10,51 @@ namespace QuadraticEquation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter coefficient a: ");
-            double a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Quadratic Equation Calculator");
 
-            Console.WriteLine("Enter coefficient b: ");
-            double b = Convert.ToDouble(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("Enter coefficient a: ");
+                double a = Convert.ToDouble(Console.ReadLine());
+                                
+                Console.WriteLine("Enter coefficient b: ");
+                double b = Convert.ToDouble(Console.ReadLine());
+                    
+                Console.WriteLine("Enter coefficient c: ");
+                double c = Convert.ToDouble(Console.ReadLine());
+                       
+                double discriminant = (b * b) - (4 * a * c);
+                if (discriminant < 0)
+                {
+                    throw new FormatException("Imaginary number.");
+                }
+                else
+                {
+                    double numberator1 = (0 - b) + Math.Sqrt(discriminant);
+                    double numberator2 = (0 - b) - Math.Sqrt(discriminant);
+                    double denominator = 2 * a;
 
-            Console.WriteLine("Enter coefficient c: ");
-            double c = Convert.ToDouble(Console.ReadLine());
+                    if (denominator == 0)
+                    {
+                        new DivideByZeroException("Dividing by 0");
+                    }
+                    else
+                    {
+                        double posx = numberator1 / denominator;
+                        double negx = numberator2 / denominator;
 
-            double discriminant = (b * b) - (4 * a * c);
-            double numberator1 = (0 - b) + Math.Sqrt(discriminant);
-            double numberator2 = (0 - b) - Math.Sqrt(discriminant);
-            double denominator = 2 * a;
-
-            double posx = numberator1 / denominator;
-            double negx = numberator2 / denominator;
-
-            Console.WriteLine("x = " + posx + " and " + negx);
+                        Console.WriteLine("x = " + posx + " and " + negx);
+                    } 
+                }                              
+            }
+            catch(FormatException e)
+            {
+                Console.WriteLine("Your input produces an imaginary number.");
+            }
+            catch(DivideByZeroException e1)
+            {
+                Console.WriteLine("Your input produces an imaginary number.");
+            }
         }
     }
 }
